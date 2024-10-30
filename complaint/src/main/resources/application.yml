@@ -13,6 +13,8 @@ spring:
         show_sql: true
         format_sql: true
   cloud:
+    function:
+      definition: wheneverComplaintReceived_ApplyComplain;discardFunction;producer;
     stream:
       kafka:
         binder:
@@ -26,16 +28,15 @@ spring:
                 value:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
-        event-in:
+        wheneverComplaintReceived_ApplyComplain-in-0:
           group: complaint
-#<<< EDA / Topic Name
           destination: complainment
-#>>> EDA / Topic Name
           contentType: application/json
-        event-out:
-#<<< EDA / Topic Name
+        discardFunction-in-0:
           destination: complainment
-#>>> EDA / Topic Name
+          contentType: application/json
+        producer-in-0:
+          destination: complainment
           contentType: application/json
 
 logging:
@@ -43,9 +44,8 @@ logging:
     org.hibernate.type: trace
     org.springframework.cloud: debug
 
-
 server:
-  port: 8088
+  port: 8087
 
 ---
 
@@ -57,17 +57,19 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:9090/realms/master/protocol/openid-connect/certs
+          jwk-set-uri: http://192.168.240.23:31234/realms/master/protocol/openid-connect/certs
   jpa:
     properties:
       hibernate:
         show_sql: true
         format_sql: true
   cloud:
+    function:
+      definition: wheneverComplaintReceived_ApplyComplain;discardFunction;producer;
     stream:
       kafka:
         binder:
-          brokers: my-kafka:9092
+          brokers: kafka.kafka:9092
         streams:
           binder:
             configuration:
@@ -77,11 +79,14 @@ spring:
                 value:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
-        event-in:
+        wheneverComplaintReceived_ApplyComplain-in-0:
           group: complaint
           destination: complainment
           contentType: application/json
-        event-out:
+        discardFunction-in-0:
+          destination: complainment
+          contentType: application/json
+        producer-in-0:
           destination: complainment
           contentType: application/json
 

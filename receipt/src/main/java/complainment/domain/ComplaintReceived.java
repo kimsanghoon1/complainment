@@ -2,6 +2,8 @@ package complainment.domain;
 
 import complainment.domain.*;
 import complainment.infra.AbstractEvent;
+import jakarta.persistence.Embedded;
+
 import java.time.LocalDate;
 import java.util.*;
 import lombok.*;
@@ -14,6 +16,7 @@ public class ComplaintReceived extends AbstractEvent {
     private Long id;
     private String 민원사무번호;
     private String 회원id;
+    @Embedded
     private ComplainmentDetail 민원상세;
 
     public ComplaintReceived(Complainment aggregate) {

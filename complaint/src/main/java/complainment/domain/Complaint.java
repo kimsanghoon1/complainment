@@ -28,6 +28,7 @@ public class Complaint {
 
     //<<< Clean Arch / Port Method
     public static void applyComplain(ComplaintReceived complaintReceived) {
+        System.out.println(complaintReceived.getId());
         //implement business logic here:
 
         /** Example 1:  new item 

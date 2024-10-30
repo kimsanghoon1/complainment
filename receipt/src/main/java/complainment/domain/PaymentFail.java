@@ -7,7 +7,7 @@ import lombok.*;
 
 @Data
 @ToString
-public class 결재완료됨 extends AbstractEvent {
+public class PaymentFail extends AbstractEvent {
 
     private Long id;
     private String 접수번호;

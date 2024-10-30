@@ -28,14 +28,10 @@ spring:
       bindings:
         event-in:
           group: receipt
-#<<< EDA / Topic Name
           destination: complainment
-#>>> EDA / Topic Name
           contentType: application/json
-        event-out:
-#<<< EDA / Topic Name
+        producer-out-0:
           destination: complainment
-#>>> EDA / Topic Name
           contentType: application/json
 
 logging:
@@ -81,7 +77,7 @@ spring:
           group: receipt
           destination: complainment
           contentType: application/json
-        event-out:
+        producer-out-0:
           destination: complainment
           contentType: application/json
 

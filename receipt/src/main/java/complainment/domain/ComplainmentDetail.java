@@ -1,12 +1,13 @@
 package complainment.domain;
 
-import jakarta.persistence.*;
-import java.util.Date;
-import java.util.List;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.BeanUtils;
 
 //<<< DDD / Value Object
 @Embeddable
@@ -15,10 +16,6 @@ import org.springframework.beans.BeanUtils;
 @NoArgsConstructor
 public class ComplainmentDetail {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String description;
 }
 //>>> DDD / Value Object

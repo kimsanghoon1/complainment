@@ -39,7 +39,7 @@ public class Complainment {
     }
 
     //<<< Clean Arch / Port Method
-    public static void applyFail(결재실패 결재실패) {
+    public static void applyFail(PaymentFail paymentFail) {
         //implement business logic here:
 
         /** Example 1:  new item 

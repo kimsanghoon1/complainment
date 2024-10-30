@@ -21,10 +21,10 @@ public class PolicyHandler {
     }
 
     @Bean
-    public Consumer<Message<결재실패>> whenever결재실패_ApplyFail() {
+    public Consumer<Message<PaymentFail>> wheneverPaymentFail_ApplyFail() {
         return event -> {
-            결재실패 결재실패 = event.getPayload();
-            Complainment.applyFail(결재실패);
+            PaymentFail paymentFail = event.getPayload();
+            Complainment.applyFail(paymentFail);
         };
     }
 }

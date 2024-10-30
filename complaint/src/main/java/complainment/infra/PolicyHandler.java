@@ -23,6 +23,7 @@ public class PolicyHandler {
     @Bean
     public Consumer<Message<ComplaintReceived>> wheneverComplaintReceived_ApplyComplain() {
         return event -> {
+            System.out.println("message");
             ComplaintReceived complaintReceived = event.getPayload();
             Complaint.applyComplain(complaintReceived);
         };

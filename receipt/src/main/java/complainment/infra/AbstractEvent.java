@@ -35,7 +35,7 @@ public class AbstractEvent {
         );
 
         streamBridge.send(
-            "producer-out-0",
+        "producer-out-0",
             MessageBuilder
                 .withPayload(this)
                 .setHeader(

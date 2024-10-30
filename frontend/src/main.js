@@ -53,10 +53,6 @@ pluralCaseList.push( {plural: "users/users", pascal: "UserUser"} )
 
 pluralCaseList.push( {plural: "searches/searchEngines", pascal: "SearchSearchEngine"} )
 
-pluralCaseList.push( {plural: "통계/starSchemes", pascal: "통계StarScheme"} )
-
-pluralCaseList.push( {plural: "연계/연계", pascal: "연계연계"} )
-
 pluralCaseList.push( {plural: "complaints/complaints", pascal: "ComplaintComplaint"} )
 
 
