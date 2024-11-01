@@ -15,8 +15,9 @@ public class Complaint {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long complainId;
-
+    private Long id;
+    private String complainId;
+    private String userId;
     private String result;
 
     public static ComplaintRepository repository() {
@@ -28,7 +29,11 @@ public class Complaint {
 
     //<<< Clean Arch / Port Method
     public static void applyComplain(ComplaintReceived complaintReceived) {
-        System.out.println(complaintReceived.getId());
+        
+        Complaint complaint = new Complaint();
+        complaint.setComplainId(complaintReceived.getComplainId());
+        complaint.setUserId(complaintReceived.getUserId());
+        repository().save(complaint);
         //implement business logic here:
 
         /** Example 1:  new item 

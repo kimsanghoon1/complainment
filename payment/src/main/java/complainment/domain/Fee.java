@@ -1,8 +1,7 @@
 package complainment.domain;
 
 import complainment.PaymentApplication;
-import complainment.domain.결재실패;
-import complainment.domain.결재완료됨;
+import complainment.domain.PaymentSuccess;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
@@ -16,20 +15,20 @@ import lombok.Data;
 public class Fee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String 접수번호;
-
-    private Long 수수료;
+    private String complainId;
+    private Long charge;
 
     @PostPersist
     public void onPostPersist() {
-        결재완료됨 결재완료됨 = new 결재완료됨(this);
+        /**
+         *  결재완료됨 결재완료됨 = new 결재완료됨(this);
         결재완료됨.publishAfterCommit();
 
-        결재실패 결재실패 = new 결재실패(this);
-        결재실패.publishAfterCommit();
+        PaymentFailed 결재실패 = new PaymentFailed(this);
+        결재실패.publishAfterCommit(); 
+        **/
     }
 
     public static FeeRepository repository() {

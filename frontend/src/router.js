@@ -70,12 +70,12 @@ export default new Router({
             },
 
             {
-                path: '/complaints/complaints',
+                path: '/complaintList/complaints',
                 name: 'ComplaintComplaintManager',
                 component: ComplaintComplaintManager
             },
             {
-                path: '/complaints/complaints/:id',
+                path: '/complaintList/complaints/:id',
                 name: 'ComplaintComplaintDetail',
                 component: ComplaintComplaintDetail
             },

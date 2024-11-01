@@ -2,12 +2,10 @@
 server:
   port: 8088
 
----
-
-
 keycloak-client:
   server-url: https://caverned-cobweb-jjgj5xwp7qgh57q-9090.app.github.dev
   realm: master
+---
 
 spring:
   config:
@@ -34,16 +32,8 @@ spring:
           uri: http://localhost:8085
           predicates:
             - Path=/searchEngines/**,  
-        - id: 통계
-          uri: http://localhost:8086
-          predicates:
-            - Path=/starSchemes/**,  
-        - id: 연계
-          uri: http://localhost:8087
-          predicates:
-            - Path=/연계/**,  
         - id: complaint
-          uri: http://localhost:8088
+          uri: http://localhost:8087
           predicates:
             - Path=/complaints/**,  
         - id: frontend
@@ -86,6 +76,8 @@ spring:
       on-profile: docker
   cloud:
     gateway:
+      default-filters:
+        - TokenRelay 
       routes:
         - id: receipt
           uri: http://receipt:8080
@@ -102,24 +94,20 @@ spring:
         - id: search
           uri: http://search:8080
           predicates:
-            - Path=/searchEngines/** 
-        - id: 통계
-          uri: http://통계:8080
-          predicates:
-            - Path=/starSchemes/** 
-        - id: 연계
-          uri: http://연계:8080
-          predicates:
-            - Path=/연계/** 
+            - Path=/searchEngines/**
         - id: complaint
           uri: http://complaint:8080
           predicates:
-            - Path=/complaints/** 
+            - Path=/complaints/**, 
+        - id: frontend
+          uri: http://frontend:8080
+          predicates:
+            - Path=/**
       globalcors:
         corsConfigurations:
           '[/**]':
             allowedOrigins:
-              - "*"
+              - http://180.210.76.90, http://192.168.240.23
             allowedMethods:
               - "*"
             allowedHeaders:
@@ -134,9 +122,9 @@ spring:
             user-name-attribute: preferred_username
         registration:
           keycloak:
-            client-id: "<client-id>"
-            client-secret: 
-            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+            client-id: uengine
+            client-secret: kciiFUHlMwDguM2CO32cfpaW9Hdayc0l
+            redirect-uri: http://180.210.76.90:8080/login/oauth2/code/uengine
             authorization-grant-type: authorization_code
             scope: openid
       resourceserver:

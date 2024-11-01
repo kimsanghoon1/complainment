@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: username/gateway:latest
+          image: sanghoon01/complainment-gateway:v0.1
           ports:
             - containerPort: 8080

@@ -18,12 +18,10 @@ public class SecurityConfiguration {
             .and()
             .csrf()
             .disable()
-            .authorizeExchange()
-            .pathMatchers("/login/**", "/logout**", "/products/**")
-            .permitAll()
-            .anyExchange()
-            .authenticated()
-            .and()
+            .authorizeExchange(exchange -> exchange
+                .pathMatchers("/login/**", "/logout**", "/products/**").permitAll()
+                .anyExchange().authenticated()
+            )
             .oauth2Login(); // to redirect to oauth2 login page.
 
         return http.build();

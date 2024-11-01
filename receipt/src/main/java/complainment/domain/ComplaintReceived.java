@@ -14,10 +14,10 @@ import lombok.*;
 public class ComplaintReceived extends AbstractEvent {
 
     private Long id;
-    private String 민원사무번호;
-    private String 회원id;
+    private String complainId;
+    private String userId;
     @Embedded
-    private ComplainmentDetail 민원상세;
+    private ComplainmentDetail detail;
 
     public ComplaintReceived(Complainment aggregate) {
         super(aggregate);

@@ -2,11 +2,21 @@ spring:
   config:
     activate:
       on-profile: default
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://localhost:9090/realms/master/protocol/openid-connect/certs
+  # security:
+  #   oauth2:
+  #     client:
+  #       provider:
+  #         keycloak:
+  #           issuer-uri: http://localhost:9090/realms/master
+  #           user-name-attribute: preferred_username
+  #       registration:
+  #         keycloak:
+  #           provider: keycloak
+  #           client-id: uengine
+  #           client-secret: 8zbNqhIyxO63TUs5CX5Ckp9WoFaWJpoD
+  #     resourceserver:
+  #       jwt:
+  #         jwk-set-uri: http://localhost:9090/realms/master/protocol/openid-connect/certs
   jpa:
     properties:
       hibernate:
@@ -53,11 +63,6 @@ spring:
   config:
     activate:
       on-profile: docker
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://localhost:9090/realms/master/protocol/openid-connect/certs
   jpa:
     properties:
       hibernate:
@@ -67,7 +72,7 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: my-kafka:9092
+          brokers: kafka.kafka.svc.cluster.local:9092
         streams:
           binder:
             configuration:
@@ -81,8 +86,7 @@ spring:
           group: payment
           destination: complainment
           contentType: application/json
-        event-out:
+        producer-out-0:
           destination: complainment
           contentType: application/json
-
 

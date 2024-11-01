@@ -16,7 +16,8 @@
         </v-card-title >        
 
         <v-card-text>
-            <Number v-if="editMode" label="민원사무번호" v-model="value.complainId" :editMode="editMode" :inputUI="''"/>
+            <String label="민원사무번호" v-model="value.complainId" :editMode="editMode" :inputUI="''"/>
+            <String label="유저 ID" v-model="value.userId" :editMode="editMode" :inputUI="''"/>
             <String label="결과" v-model="value.result" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 

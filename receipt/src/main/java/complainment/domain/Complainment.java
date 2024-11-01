@@ -2,6 +2,7 @@ package complainment.domain;
 
 import complainment.ReceiptApplication;
 import complainment.domain.ComplaintReceived;
+import complainment.external.Fee;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
@@ -29,6 +30,14 @@ public class Complainment {
     public void onPostPersist() {
         ComplaintReceived complaintReceived = new ComplaintReceived(this);
         complaintReceived.publishAfterCommit();
+
+        Fee fee = new Fee();
+        fee.setComplainId(complainId);
+        fee.setCharge(500L);
+        ReceiptApplication.applicationContext
+        .getBean(complainment.external.FeeService.class)
+        .pay(complainId, fee);
+
     }
 
     public static ComplainmentRepository repository() {

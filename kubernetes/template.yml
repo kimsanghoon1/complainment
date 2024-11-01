@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: receipt
-          image: username/receipt:latest
+          image: sanghoon01/receipt:v0.1
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
         - name: payment
-          image: username/payment:latest
+          image: sanghoon01/payment:v0.1
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -258,7 +258,7 @@ spec:
     spec:
       containers:
         - name: complaint
-          image: username/complaint:latest
+          image: sanghoon01/complaint:v0.1
           ports:
             - containerPort: 8080
           readinessProbe:

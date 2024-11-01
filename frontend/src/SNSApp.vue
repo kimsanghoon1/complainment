@@ -109,7 +109,7 @@
                     <v-list-item
                         class="px-2"
                         key="complaints"
-                        to="/complaints/complaints"
+                        to="/complaintList/complaints"
                         @click="changeUrl()"
                         color="primary"
                         style="font-weight:700;"
@@ -242,7 +242,7 @@ export default {
                 title: '민원', 
                 description: '', 
                 key: 'complaints', 
-                route: '/complaints/complaints',
+                route: '/complaintList/complaints',
                 ImageUrl: '',
             },
             

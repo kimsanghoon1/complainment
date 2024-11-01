@@ -33,6 +33,7 @@ public class ResourceSecurityConfig {
                     // .antMatchers("/orders/placeOrder**").hasRole("CUSTOMER")	// You can protect resource here, or each Method Level
                     // .antMatchers("/orders/manageOrder**").hasRole("ADMIN")
                     // .antMatchers("/orders/manageOrder**").permitAll()
+                    .requestMatchers("/actuator/**").permitAll()
                     .anyRequest()
                     .authenticated()
             )

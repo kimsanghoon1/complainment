@@ -1,4 +1,4 @@
-FROM openjdk:8u212-jdk-alpine
+FROM eclipse-temurin:17-jdk-jammy
 COPY target/*SNAPSHOT.jar app.jar
 EXPOSE 8080
 ENV TZ=Asia/Seoul

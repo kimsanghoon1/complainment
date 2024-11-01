@@ -2,11 +2,6 @@ spring:
   config:
     activate:
       on-profile: default
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://localhost:9090/realms/master/protocol/openid-connect/certs
   jpa:
     properties:
       hibernate:
@@ -43,17 +38,16 @@ logging:
 server:
   port: 8082
 
+api:
+  url: 
+    payment: localhost:8083
+
 ---
 
 spring:
   config:
     activate:
       on-profile: docker
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://localhost:9090/realms/master/protocol/openid-connect/certs
   jpa:
     properties:
       hibernate:
@@ -63,7 +57,7 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: my-kafka:9092
+          brokers: kafka.kafka.svc.cluster.local:9092
         streams:
           binder:
             configuration:
@@ -81,4 +75,6 @@ spring:
           destination: complainment
           contentType: application/json
 
-
+api:
+  url: 
+    payment: payment:8080 
